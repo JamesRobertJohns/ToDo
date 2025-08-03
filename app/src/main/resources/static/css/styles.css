@@ -1,0 +1,50 @@
+
+/* 
+* Box sizing rules 
+*
+* Ensure that border widths are what you get, not added to content box
+*
+* */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+.item-card {
+  border-radius: 16px;
+  border: 1px solid Gray;
+  background-color: white;
+  padding-left: 20px;
+  margin: 16px;
+  width: 480px;
+  height: 100px;
+  align-content: center;
+}
+
+.item-card-content {
+  align-content: center;
+}
+
+.item-card-title {
+  text-align: left;
+  font-family: sans;
+  font-size: 24px;
+  font-weight: 10;
+}
+
+.item-card-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
