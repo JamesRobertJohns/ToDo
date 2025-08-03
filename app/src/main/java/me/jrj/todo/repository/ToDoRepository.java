@@ -29,4 +29,6 @@ public interface ToDoRepository {
    *
    */
   void delete(ToDoItem pToDoItem);
+
+  List<ToDoItem> findByCompletionStatus(boolean pIsCompleted);
 }

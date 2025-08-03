@@ -53,4 +53,15 @@ public class InMemoryToDoRepository implements ToDoRepository {
     toDos.remove(pToDoItem.id());
     return;
   }
+
+  @Override
+  public List<ToDoItem> findByCompletionStatus(boolean pIsCompleted) {
+    List<ToDoItem> res = new ArrayList<ToDoItem>();
+    List<ToDoItem> cur = findAll();
+    for (ToDoItem itm : cur) {
+      if (itm.isCompleted() == pIsCompleted) res.add(itm);
+    }
+    return Collections.unmodifiableList(res);
+  }
+
 }
