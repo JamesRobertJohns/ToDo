@@ -2,11 +2,19 @@
   <head><title>Home Page</title></head>
   <body>
     <h1>List of To Do Items</h1>
+
     <ol>
       <li th:each="item : ${toDoListItems}">
-        <span th:text="${item.name}">Task Name</span>
+        <span th:text="${item.name + (item.completed ? ' ✅' : ' ❌')}">Task Name</span>
       </li>
       <li th:if="${#lists.isEmpty(toDoListItems)}">No tasks available at the moment</li>
     </ol>
+
+    <h2>Add To Do Items</h2>
+    <form action="/insert" method="post">
+      <input type="text" name="pName" required/> 
+      <button type="submit">Add</button>
+    </form>
+
   </body>
 </html>
