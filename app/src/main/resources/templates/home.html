@@ -4,25 +4,19 @@
     <link rel="icon" href="icon.png" type="image/png" />
     <title>To Do</title>
   </head>
+
   <body>
 
-    <h1>List of To Do Items</h1>
-
-    <p th:if="${#lists.isEmpty(toDoListItems)}">No tasks available at the moment</p>
-    <div th:each="item: ${toDoListItems}" class="item-card-list">
-      <div class="item-card"> 
-        <div class="item-card-content">
-          <h3 th:text="${item.name + (item.completed ? ' ✅' : ' ❌')}" class="item-card-title">Task Name</h3>
-        </div>
-      </div>
-    </div>
-
-
-    <h2>Add To Do Items</h2>
-    <form action="/insert" method="post">
-      <input type="text" name="pName" required/> 
+    <form action="/insert" method="post" class="add-item-form">
+      <input type="text" name="pName" required placeholder="Enter new task..."></input> 
       <button type="submit">Add</button>
     </form>
+
+    <p class="empty-message" th:if="${#lists.isEmpty(toDoListItems)}">Everything's done. Yay! ✨</p>
+
+    <div th:each="item: ${toDoListItems}" class="item-card-list">
+      <h3 th:text="${item.name + (item.completed ? ' ✅' : ' ❌')}" class="item-card">Task Name</h3>
+    </div>
 
   </body>
 </html>

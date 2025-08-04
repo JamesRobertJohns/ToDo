@@ -1,4 +1,3 @@
-
 /* 
 * Box sizing rules 
 *
@@ -10,6 +9,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: proxima-soft;
+  font-size: 100%;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -18,26 +19,45 @@ ol[role='list'] {
   list-style: none;
 }
 
+
 .item-card {
   border-radius: 16px;
   border: 1px solid Gray;
   background-color: white;
-  padding-left: 20px;
+  padding: 20px;
   margin: 16px;
   width: 480px;
-  height: 100px;
+  height: min-content;
+  min-height: 80px;
   align-content: center;
-}
-
-.item-card-content {
-  align-content: center;
-}
-
-.item-card-title {
-  text-align: left;
-  font-family: sans;
+  text-align: center;
   font-size: 24px;
-  font-weight: 10;
+  font-weight: lighter;
+  overflow-wrap: break-word;
+}
+
+.empty-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #353535;
+}
+
+.add-item-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.add-item-form input {
+  background-color: white;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 16px;
+  width: 420px;
+  height: 50px;
 }
 
 .item-card-list {
