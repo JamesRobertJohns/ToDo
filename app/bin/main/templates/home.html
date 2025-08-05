@@ -1,7 +1,23 @@
-<html>
-<head><title>Home Page</title></head>
-<body>
-    <h1>Hello !</h1>
-    <p>Welcome to Our App</span></p>
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <link rel="icon" href="icon.png" type="image/png" />
+    <title>To Do</title>
+  </head>
+
+  <body>
+
+    <form action="/insert" method="post" class="add-item-form">
+      <input type="text" name="pName" required placeholder="Enter new task..."></input> 
+      <button type="submit">Add</button>
+    </form>
+
+    <p class="empty-message" th:if="${#lists.isEmpty(toDoListItems)}">Everything's done. Yay! ✨</p>
+
+    <div th:each="item: ${toDoListItems}" class="item-card-list">
+      <h3 th:text="${item.name + (item.completed ? ' ✅' : ' ❌')}" class="item-card">Task Name</h3>
+      <div></div>
+    </div>
+
+  </body>
 </html>

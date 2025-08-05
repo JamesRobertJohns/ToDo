@@ -59,9 +59,13 @@ public class ToDoController {
     return "redirect:/";  
   }
 
-  @DeleteMapping("/delete")
-  public String deleteItem(@RequestParam("pToDoItem") ToDoItem pToDoItem, Model model) {
-    repository.delete(pToDoItem);
+  /**
+   * work around using forms, to refactor to true REST using JS
+   */
+  @PostMapping("/delete")
+  public String deleteItem(@RequestParam("pId") Long pId, Model model) {
+    repository.delete(repository.findById(pId).get());
     return "redirect:/";
   }
+
 }
