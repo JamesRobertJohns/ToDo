@@ -7,7 +7,7 @@
 
   <body>
 
-    <form action="/insert" method="post" class="add-item-form">
+    <form th:action="@{/insert}" method="post" class="add-item-form">
       <input type="text" name="pName" required placeholder="Enter new task..."></input> 
       <button type="submit">Add</button>
     </form>
@@ -15,9 +15,20 @@
     <p class="empty-message" th:if="${#lists.isEmpty(toDoListItems)}">Everything's done. Yay! ✨</p>
 
     <div th:each="item: ${toDoListItems}" class="item-card-list">
-      <h3 th:text="${item.name + (item.completed ? ' ✅' : ' ❌')}" class="item-card">Task Name</h3>
-      <div></div>
+
+      <div class="item-card-row">
+        <h3 th:text="${item.name + (item.completed ? ' ✅' : ' ❌')}" class="item-card">Task Name</h3>
+
+        <form th:action="@{/delete}" method="post" class="user-actions">
+          <input type="hidden" name="pId" th:value="${item.id}"></input>
+          <button type="submit">   </button>
+        </form>
+
+      </div>
+
     </div>
 
   </body>
 </html>
+
+

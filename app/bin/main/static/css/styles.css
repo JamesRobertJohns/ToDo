@@ -66,5 +66,42 @@ ol[role='list'] {
   align-items: center;
 }
 
+.item-card-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 
+.user-actions {
+  display: flex; 
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
 
+.user-actions button {
+  height: 80px;
+  width: 80px;
+  border-radius: 16px;
+  border: 1px solid grey;
+  background-color: white;
+  maring: 0;
+}
+
+.user-actions button:hover {
+  background-color: #dee2e6;
+}
+
+/**
+--seasalt: #f8f9faff;
+--antiflash-white: #e9ecefff;
+--platinum: #dee2e6ff;
+--french-gray: #ced4daff;
+--french-gray-2: #adb5bdff;
+--slate-gray: #6c757dff;
+--outer-space: #495057ff;
+--onyx: #343a40ff;
+--eerie-black: #212529ff;
+*/

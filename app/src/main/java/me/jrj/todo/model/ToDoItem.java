@@ -13,5 +13,9 @@ public record ToDoItem(Long id, String name, boolean isCompleted) implements Com
   public int compareTo(ToDoItem other) {
     return this.id.compareTo(other.id);
   }
+
+  public ToDoItem toggleCompletionStatus() {
+    return new ToDoItem(id, name, !isCompleted);
+  }
 }
 

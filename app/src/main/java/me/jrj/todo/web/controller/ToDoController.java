@@ -47,11 +47,19 @@ public class ToDoController {
     return "home";
   }
 
-  @PatchMapping("/completionStatus") 
+  @GetMapping("/completionStatus") 
   public String findItemByCompletionStatus(@RequestParam("pIsCompleted") boolean pIsCompleted, Model model) {
-     List<ToDoItem> completedItems = repository.findByCompletionStatus(true);
+     List<ToDoItem> completedItems = repository.findByCompletionStatus(pIsCompleted);
+    model.addAttribute("toDoListItems", completedItems);
+    return "home";
+  }
+
+  @PostMapping("/toggleComplete") 
+  public String toggleItemCompletionStatus(@RequestParam("pId") Long pId, Model model) {
+    repository.update(repository.findById(pId).get().toggleCompletionStatus());  
     return "redirect:/";
   }
+    
 
   @PatchMapping("/update")
   public String updateItem(@RequestParam("pToDoItem") ToDoItem pToDoItem, Model model) {
