@@ -1,5 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <link rel="icon" href="icon.png" type="image/png" />
     <title>To Do</title>
@@ -29,6 +30,16 @@
             <input type="hidden" name="pId" th:value="${item.id}"></input>
             <button type="submit">Toggle</button>
           </form>
+
+          <form th:action="@{/update}" method="post" class="user-update-taskname">
+            <input type="hidden" name="pId" th:value="${item.id}"></input>
+            <input type="text" name="pName" th:value="${item.name}" th:placeholder="${item.name}"></input>
+            <input type="hidden" name="pStatus" th:value="${item.isCompleted}"></input>
+            <button type="submit">Edit</button>
+          </form>
+
+          
+
         </div>
 
       </div>

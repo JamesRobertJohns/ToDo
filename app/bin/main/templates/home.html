@@ -1,5 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <link rel="icon" href="icon.png" type="image/png" />
     <title>To Do</title>
@@ -19,10 +20,17 @@
       <div class="item-card-row">
         <h3 th:text="${item.name + (item.completed ? ' ✅' : ' ❌')}" class="item-card">Task Name</h3>
 
-        <form th:action="@{/delete}" method="post" class="user-actions">
-          <input type="hidden" name="pId" th:value="${item.id}"></input>
-          <button type="submit">   </button>
-        </form>
+        <div class="user-actions">
+          <form th:action="@{/delete}" method="post" class="user-delete">
+            <input type="hidden" name="pId" th:value="${item.id}"></input>
+            <button type="submit">   </button>
+          </form>
+          
+          <form th:action="@{/toggleComplete}" method="post" class="user-toggle-status">
+            <input type="hidden" name="pId" th:value="${item.id}"></input>
+            <button type="submit">Toggle</button>
+          </form>
+        </div>
 
       </div>
 

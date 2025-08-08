@@ -79,6 +79,11 @@ ol[role='list'] {
   padding: 0;
   margin: 0;
   justify-content: space-between;
+  gap: 10px;
+}
+
+.user-actions * {
+  margin: 0px;
 }
 
 .user-actions button {
@@ -87,7 +92,6 @@ ol[role='list'] {
   border-radius: 16px;
   border: 1px solid grey;
   background-color: white;
-  maring: 0;
 }
 
 .user-actions button:hover {

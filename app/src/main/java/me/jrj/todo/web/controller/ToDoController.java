@@ -61,14 +61,15 @@ public class ToDoController {
   }
     
 
-  @PatchMapping("/update")
-  public String updateItem(@RequestParam("pToDoItem") ToDoItem pToDoItem, Model model) {
-    repository.update(pToDoItem);
+  @PostMapping("/update")
+  public String updateItem(@RequestParam("pId") Long pId, @RequestParam("pName") String pName, @RequestParam("pStatus") boolean pStatus, Model model) {
+    ToDoItem newItem = new ToDoItem(pId, pName, pStatus);
+    repository.update(newItem);
     return "redirect:/";  
   }
 
   /**
-   * work around using forms, to refactor to true REST using JS
+   * work around using forms, to refactor to "true" REST using JS
    */
   @PostMapping("/delete")
   public String deleteItem(@RequestParam("pId") Long pId, Model model) {
