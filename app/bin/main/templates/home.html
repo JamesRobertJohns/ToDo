@@ -8,12 +8,38 @@
 
   <body>
 
-    <form th:action="@{/insert}" method="post" class="add-item-form">
+    <form th:action="@{/insertNewTask}" method="post" class="add-item-form">
       <input type="text" name="pName" required placeholder="Enter new task..."></input> 
       <button type="submit">Add</button>
     </form>
 
+    <div class="side-bar">
+      <form th:action="@{/clearCompletedTasks}" method="post">
+        <input type="hidden"/>
+        <button type="submit" title="clear completed tasks">🆑</button>
+      </form>
+
+
+      <form th:action="@{/displayAllTasks}" method="get">
+        <input type="hidden"/>
+        <button type="submit">Display all tasks</button>
+      </form>
+
+      <form th:action="@{/taskWithCompletionStatus}" method="get">
+        <input type="hidden" name="pIsCompleted" th:value="${true}"/>
+        <button type="submit">Display Completed Tasks</button>
+      </form>
+
+
+      <form th:action="@{/taskWithCompletionStatus}" method="get">
+        <input type="hidden" name="pIsCompleted" th:value="${false}"/>
+        <button type="submit">Display Undone Tasks</button>
+      </form>
+    </div>
+
+
     <p class="empty-message" th:if="${#lists.isEmpty(toDoListItems)}">Everything's done. Yay! ✨</p>
+
 
     <div th:each="item: ${toDoListItems}" class="item-card-list">
 
@@ -21,24 +47,25 @@
         <h3 th:text="${item.name + (item.completed ? ' ✅' : ' ❌')}" class="item-card">Task Name</h3>
 
         <div class="user-actions">
-          <form th:action="@{/delete}" method="post" class="user-delete">
+
+          <form th:action="@{/toggleCompletionStatus}" method="post" class="user-toggle-status">
             <input type="hidden" name="pId" th:value="${item.id}"></input>
-            <button type="submit">   </button>
-          </form>
-          
-          <form th:action="@{/toggleComplete}" method="post" class="user-toggle-status">
-            <input type="hidden" name="pId" th:value="${item.id}"></input>
-            <button type="submit">Toggle</button>
+            <button type="submit" title="toggle completion status">⭕</button>
           </form>
 
-          <form th:action="@{/update}" method="post" class="user-update-taskname">
+          <form th:action="@{/deleteTask}" method="post" class="user-delete">
+            <input type="hidden" name="pId" th:value="${item.id}"></input>
+            <button type="submit" title="delete this task">   </button>
+          </form>
+
+          <form th:action="@{/updateTask}" method="post" class="user-update-taskname">
             <input type="hidden" name="pId" th:value="${item.id}"></input>
             <input type="text" name="pName" th:value="${item.name}" th:placeholder="${item.name}"></input>
             <input type="hidden" name="pStatus" th:value="${item.isCompleted}"></input>
-            <button type="submit">Edit</button>
+            <button type="submit" title="edit task name">✏️</button>
           </form>
 
-          
+
 
         </div>
 

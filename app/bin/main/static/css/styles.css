@@ -98,6 +98,11 @@ ol[role='list'] {
   background-color: #dee2e6;
 }
 
+.side-bar {
+  display: flex;
+  flex-direction: column; 
+}
+
 /**
 --seasalt: #f8f9faff;
 --antiflash-white: #e9ecefff;

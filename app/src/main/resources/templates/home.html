@@ -13,28 +13,30 @@
       <button type="submit">Add</button>
     </form>
 
-    <div class="side-bar">
-      <form th:action="@{/clearCompletedTasks}" method="post">
-        <input type="hidden"/>
-        <button type="submit" title="clear completed tasks">🆑</button>
-      </form>
+    <div class="side-bar-wrapper">
+      <div class="side-bar">
+        <form th:action="@{/clearCompletedTasks}" method="post">
+          <input type="hidden"/>
+          <button type="submit" title="clear completed tasks">🆑</button>
+        </form>
 
 
-      <form th:action="@{/displayAllTasks}" method="get">
-        <input type="hidden"/>
-        <button type="submit">Display all tasks</button>
-      </form>
+        <form th:action="@{/displayAllTasks}" method="get">
+          <input type="hidden"/>
+          <button type="submit">Display all tasks</button>
+        </form>
 
-      <form th:action="@{/taskWithCompletionStatus}" method="get">
-        <input type="hidden" name="pIsCompleted" th:value="${true}"/>
-        <button type="submit">Display Completed Tasks</button>
-      </form>
+        <form th:action="@{/taskWithCompletionStatus}" method="get">
+          <input type="hidden" name="pIsCompleted" th:value="${true}"/>
+          <button type="submit">Display Completed Tasks</button>
+        </form>
 
 
-      <form th:action="@{/taskWithCompletionStatus}" method="get">
-        <input type="hidden" name="pIsCompleted" th:value="${false}"/>
-        <button type="submit">Display Undone Tasks</button>
-      </form>
+        <form th:action="@{/taskWithCompletionStatus}" method="get">
+          <input type="hidden" name="pIsCompleted" th:value="${false}"/>
+          <button type="submit">Display Undone Tasks</button>
+        </form>
+      </div>
     </div>
 
 
