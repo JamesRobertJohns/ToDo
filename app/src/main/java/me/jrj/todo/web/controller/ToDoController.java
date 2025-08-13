@@ -24,8 +24,8 @@ public class ToDoController {
     return "home";
   }  
 
-  @PostMapping("/clearCompleted")
-  public String clearCompletedItem(Model model) {
+  @PostMapping("/clearCompletedTasks")
+  public String clearCompletedTasks(Model model) {
     List<ToDoItem> completedItems = repository.findByCompletionStatus(true);
     for (ToDoItem item : completedItems) {
       repository.delete(item);
@@ -35,34 +35,34 @@ public class ToDoController {
     return "redirect:/";
   }
 
-  @PostMapping("/insert")
-  public String insertNewItem(@RequestParam("pName") String pName, Model model) {
+  @PostMapping("/insertNewTask")
+  public String insertNewTask(@RequestParam("pName") String pName, Model model) {
     repository.insert(pName);
     return "redirect:/";
   }
 
   @GetMapping("/id")
-  public String findItemById(@RequestParam("pId") Long pId,  Model model) {
+  public String findTaskById(@RequestParam("pId") Long pId,  Model model) {
     model.addAttribute("toDoListitems", repository.findById(pId));
     return "home";
   }
 
   @GetMapping("/completionStatus") 
-  public String findItemByCompletionStatus(@RequestParam("pIsCompleted") boolean pIsCompleted, Model model) {
+  public String findTaskByCompletionStatus(@RequestParam("pIsCompleted") boolean pIsCompleted, Model model) {
      List<ToDoItem> completedItems = repository.findByCompletionStatus(pIsCompleted);
     model.addAttribute("toDoListItems", completedItems);
     return "home";
   }
 
-  @PostMapping("/toggleComplete") 
+  @PostMapping("/toggleCompletionStatus") 
   public String toggleItemCompletionStatus(@RequestParam("pId") Long pId, Model model) {
     repository.update(repository.findById(pId).get().toggleCompletionStatus());  
     return "redirect:/";
   }
     
 
-  @PostMapping("/update")
-  public String updateItem(@RequestParam("pId") Long pId, @RequestParam("pName") String pName, @RequestParam("pStatus") boolean pStatus, Model model) {
+  @PostMapping("/updateTask")
+  public String updateTask(@RequestParam("pId") Long pId, @RequestParam("pName") String pName, @RequestParam("pStatus") boolean pStatus, Model model) {
     ToDoItem newItem = new ToDoItem(pId, pName, pStatus);
     repository.update(newItem);
     return "redirect:/";  
@@ -71,8 +71,8 @@ public class ToDoController {
   /**
    * work around using forms, to refactor to "true" REST using JS
    */
-  @PostMapping("/delete")
-  public String deleteItem(@RequestParam("pId") Long pId, Model model) {
+  @PostMapping("/deleteTask")
+  public String deleteTask(@RequestParam("pId") Long pId, Model model) {
     repository.delete(repository.findById(pId).get());
     return "redirect:/";
   }
