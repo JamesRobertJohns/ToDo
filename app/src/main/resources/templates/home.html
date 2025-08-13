@@ -15,12 +15,31 @@
 
     <div class="side-bar">
       <form th:action="@{/clearCompletedTasks}" method="post">
-          <input type="hidden"/>
-          <button type="submit" title="clear completed tasks">🆑</button>
+        <input type="hidden"/>
+        <button type="submit" title="clear completed tasks">🆑</button>
+      </form>
+
+
+      <form th:action="@{/displayAllTasks}" method="get">
+        <input type="hidden"/>
+        <button type="submit">Display all tasks</button>
+      </form>
+
+      <form th:action="@{/taskWithCompletionStatus}" method="get">
+        <input type="hidden" name="pIsCompleted" th:value="${true}"/>
+        <button type="submit">Display Completed Tasks</button>
+      </form>
+
+
+      <form th:action="@{/taskWithCompletionStatus}" method="get">
+        <input type="hidden" name="pIsCompleted" th:value="${false}"/>
+        <button type="submit">Display Undone Tasks</button>
       </form>
     </div>
 
+
     <p class="empty-message" th:if="${#lists.isEmpty(toDoListItems)}">Everything's done. Yay! ✨</p>
+
 
     <div th:each="item: ${toDoListItems}" class="item-card-list">
 
@@ -38,7 +57,7 @@
             <input type="hidden" name="pId" th:value="${item.id}"></input>
             <button type="submit" title="delete this task">   </button>
           </form>
-          
+
           <form th:action="@{/updateTask}" method="post" class="user-update-taskname">
             <input type="hidden" name="pId" th:value="${item.id}"></input>
             <input type="text" name="pName" th:value="${item.name}" th:placeholder="${item.name}"></input>
@@ -46,7 +65,7 @@
             <button type="submit" title="edit task name">✏️</button>
           </form>
 
-          
+
 
         </div>
 

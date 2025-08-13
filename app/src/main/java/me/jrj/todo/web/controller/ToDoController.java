@@ -24,6 +24,11 @@ public class ToDoController {
     return "home";
   }  
 
+  @GetMapping("/displayAllTasks") 
+  public String displayAllTasks() {
+    return "redirect:/";
+  }
+
   @PostMapping("/clearCompletedTasks")
   public String clearCompletedTasks(Model model) {
     List<ToDoItem> completedItems = repository.findByCompletionStatus(true);
@@ -47,7 +52,7 @@ public class ToDoController {
     return "home";
   }
 
-  @GetMapping("/completionStatus") 
+  @GetMapping("/taskWithCompletionStatus") 
   public String findTaskByCompletionStatus(@RequestParam("pIsCompleted") boolean pIsCompleted, Model model) {
      List<ToDoItem> completedItems = repository.findByCompletionStatus(pIsCompleted);
     model.addAttribute("toDoListItems", completedItems);
