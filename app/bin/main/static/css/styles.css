@@ -101,7 +101,18 @@ ol[role='list'] {
 .side-bar {
   display: flex;
   flex-direction: column; 
+  width: 240px;
 }
+
+.side-bar form {
+  display: contents;
+}
+
+.side-bar-wrapper {
+  display: flex;
+  height: 0;
+}
+
 
 /**
 --seasalt: #f8f9faff;
